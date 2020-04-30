@@ -39,7 +39,8 @@ class VersionInfo():
         new_version = self.versionInfo['header'] + separator
         hexTable="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         new_version += yearMonth + hexTable[int(self.versionInfo['month_release_count'])]
-
+        new_version += self.versionInfo['tail']
+        
         return new_version
         
     def _readVersionInfo(self):
@@ -57,6 +58,7 @@ class VersionInfo():
         jsonData['header'] = self.versionInfo['header']
         jsonData['date'] = self.versionInfo['date']
         jsonData['month_release_count'] = self.versionInfo['month_release_count']
+        jsonData['tail'] = self.versionInfo['tail']
 
         aBakFile = open(self.versionDataFile + ".bak" ,'w', encoding="UTF-8")
         aBakFile.write(json.dumps(jsonData))
@@ -91,10 +93,11 @@ class VersionInfo():
     def initVersionInfo(self):
         self.versionInfo = {}
         self.versionInfo['filename'] = "version.py"
-        self.versionInfo['header'] = "SW_VERSION=V0.1105"
+        self.versionInfo['header'] = 'SW_VERSION="V0.1105'
         self.versionInfo['separator'] = "."
         self.versionInfo['date'] = "TE"
         self.versionInfo['month_release_count'] = 1
+        self.versionInfo['tail'] = '"'
 
 def main(): 
     versionInfo = VersionInfo()
