@@ -4,13 +4,6 @@ import traceback
 import copy
 import datetime
 
-SW_TITLE = "Get file list v0.1105TC1"
-
-'''
-3. 버전업을 한다.
-4. 원래 파일은 .bak를 붙여서 보관한다
-'''
-
 class VersionInfo():
     def __init__(self):
         self.versionDataFile = "version.json"
@@ -57,7 +50,7 @@ class VersionInfo():
             self._makeVersionFile()
         
     def _saveVersionInfo(self):  
-        print("_saveVersionInfo")
+        #print("_saveVersionInfo")
         jsonData = {}
         jsonData['filename'] = self.versionInfo['filename']
         jsonData['separator'] = self.versionInfo['separator']   
